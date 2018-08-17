@@ -1,3 +1,73 @@
+# 2018.08.17 update
+
+支持Python 3.6、django 2.1。
+
+1. 修改 xadmin，这里是[另一个版本](https://github.com/vip68/xadmin_bugfix ) 
+2. 修改django-pure-pagination。
+3. 修改登录验证。
+4. 数据库使用sqlite3
+
+感谢原作者。
+
+
+说明：
+
+1) xadmin修改：
+xadmin已经更新，但是插件没有更新：
+
+文件  `extra_apps/xadmin/plugins/images.py`，第45~52行如下：
+
+```python
+    # def render(self, name, value, attrs=None):                # <--- 修改前
+    def render(self, name, value, attrs=None, renderer=None):   # <--- 修改后
+        output = []
+        if value and hasattr(value, "url"):
+            label = self.attrs.get('label', name)
+            output.append('<a href="%s" target="_blank" title="%s" data-gallery="gallery"><img src="%s" class="field_img"/></a><br/>%s ' %
+                         (value.url, label, value.url, _('Change:')))
+        # output.append(super(AdminImageWidget, self).render(name, value, attrs))           # <--- 修改前
+        output.append(super(AdminImageWidget, self).render(name, value, attrs, renderer))   # <--- 修改后
+        return mark_safe(u''.join(output))
+```
+
+未修改的文件：extra_apps/xadmin/plugins/multiselect.py：
+第83~87行
+```python
+    def render(self, name, value, attrs=None, choices=()):
+        if attrs is None:
+            attrs = {}
+        attrs['class'] = 'selectmultiple selectdropdown'
+        return super(SelectMultipleDropdown, self).render(name, value, attrs, choices)
+```
+不清楚是否能正常工作。
+
+
+2) django-pure-pagination修改：
+
+文件：paginator.py，第205~210行如下：
+
+```python
+        if self.paginator.request:            
+            #self.base_queryset['page'] = page_number       # <------ 修改前
+            self.base_queryset['page'] = str(page_number)   # <------ 修改后
+            return self.base_queryset.urlencode()
+        ...
+```        
+
+3) 登录验证修改：
+`apps/users/views.py`
+
+```python
+# 实现用户名邮箱均可登录
+# 继承ModelBackend类，因为它有方法authenticate，可点进源码查看
+class CustomBackend(ModelBackend):
+    # def authenticate(self, username=None, password=None, **kwargs):           # <------ 修改前
+    def authenticate(self, request, username=None, password=None, **kwargs):    # <------ 修改后
+        try:
+        ...
+```
+
+
 # Mxonline3
 
 [![Build Status](https://travis-ci.org/mtianyan/hexoBlog-Github.svg?branch=master)](https://travis-ci.org/mtianyan/hexoBlog-Github)
