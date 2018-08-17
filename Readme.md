@@ -1,4 +1,4 @@
-# 2018.08.17 update
+# 2018.08.17 update [![Build Status](https://travis-ci.org/njuFerret/Mxonline3.svg?branch=master)](https://travis-ci.org/njuFerret/Mxonline3)
 
 支持Python 3.6、django 2.1。
 
@@ -70,7 +70,7 @@ class CustomBackend(ModelBackend):
 
 # Mxonline3
 
-[![Build Status](https://travis-ci.org/mtianyan/hexoBlog-Github.svg?branch=master)](https://travis-ci.org/mtianyan/hexoBlog-Github)
+
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
 使用Python3.x与Django2.0.1开发的在线教育平台网站: http://mxonline.mtianyan.cn
