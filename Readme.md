@@ -41,6 +41,8 @@ xadmin已经更新，但是插件没有更新：
 ```
 不清楚是否能正常工作。
 
+按照[xadmin/django2]( https://github.com/sshwsfc/xadmin/commit/a9daa73f406b7d6af0d49bba01e932755fae2d65 )的说明修改两个文件，`xadmin/plugins/actions.py`和`xadmin/views/base.py`。
+
 
 2) django-pure-pagination修改：
 

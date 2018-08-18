@@ -1,1 +1,5 @@
 **/__pycache__
+/log/error.log
+/log/info.log
+/log/script.log
+/log/all.log
