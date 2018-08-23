@@ -18,7 +18,6 @@ from .util import vendor
 
 DJANGO_11 = True
 
-
 class AdminDateWidget(forms.DateInput):
 
     @property

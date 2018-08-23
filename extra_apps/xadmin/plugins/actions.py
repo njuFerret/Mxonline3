@@ -93,7 +93,7 @@ class DeleteSelectedAction(BaseActionView):
         using = router.db_for_write(self.model)
 
         if django_version > (2, 0):
-            setattr(self.admin_site._registry[self.model], 'has_delete_permission', self.has_delete_permission)    
+            setattr(self.admin_site._registry[self.model], 'has_delete_permission', self.has_delete_permission)
 
 
         # Populate deletable_objects, a data structure of all related objects that
